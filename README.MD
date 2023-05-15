@@ -1,6 +1,6 @@
 # Terrible image RLE Encoder
 
-A simple and (currently) bad image compressor, that uses the RLE (Run length encoding) alorithm.
+A simple and (currently) bad image compressor, that uses the RLE (Run length encoding) algorithm.
 
 ## Encoded output
 
@@ -12,12 +12,13 @@ It iterates over every row in an image, and convert to color blocks with the rep
 50#ffffff 10#000000 40#dedede
 
 ...
-
 ```
 
 It writes this output to a .txt file.
 
 ## Getting started
+
+You can change these variables to get the script started.
 
 ```py
 
