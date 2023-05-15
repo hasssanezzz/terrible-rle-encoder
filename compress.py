@@ -60,7 +60,7 @@ class Compressor():
                 f.write('\n')
 
 
-class Reader():
+class Decompressor():
     def __init__(self):
         self.H = None
         self.W = None
@@ -115,7 +115,7 @@ print("Size of compressed in memory:", sys.getsizeof(c.compressed)//1024, "KB")
 print("Size of compressed file:", os.path.getsize(COMPRESSED_FILE_OUTPUT) // 1024, "KB")
 
 # Decompress
-r = Reader()
+r = Decompressor()
 t_decode = pc()
 r.readFrom(COMPRESSED_FILE_OUTPUT)
 print("[+]Time to decode:", pc() - t_decode)
