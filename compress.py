@@ -6,9 +6,9 @@ from time import sleep, perf_counter as pc
 
 # ======================== SETTINGS ======================
 # ========================================================
-INPUT = 'in.png'
-OUTPUT = 'result.jpg'
-COMPRESSED_FILE_OUTPUT = 'compressed.txt'
+INPUT = './test-imgs/22.jfif'
+OUTPUT = './output/result.jpg'
+COMPRESSED_FILE_OUTPUT = './output/compressed.rle'
 # ========================================================
 # ========================================================
 
@@ -56,6 +56,9 @@ class Compressor():
             for row in self.compressed:
                 for tup in row:
                     s, rep = tup
+                    # if the color is only repeated once don't write it
+                    if int(rep) == 1:
+                        rep = ''
                     f.write(f'{rep}{s} ')
                 f.write('\n')
 
@@ -83,9 +86,13 @@ class Decompressor():
                 r = []
                 splittedLine = line.split(' ')[:-1]
                 for block in splittedLine:
-                    rep, color = block.split("#")
-                    for _ in range(int(rep)):
-                        r.append(self._hex_to_rgb(color))
+                    # check if no rep in written
+                    if block[0] == '#':
+                        r.append(self._hex_to_rgb(block[1:]))
+                    else:
+                        rep, color = block.split('#')
+                        for _ in range(int(rep)):
+                            r.append(self._hex_to_rgb(color))
                 self.res.append(r)
 
         W = len(self.res[0]); H = len(self.res)
