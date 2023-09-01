@@ -1,5 +1,3 @@
-helpers
-img
-test-imgs
-create.py
-output
+.venv
+debugging
+__pycache__

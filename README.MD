@@ -1,6 +1,6 @@
 # Terrible image RLE Encoder
 
-A simple and (currently) bad image compressor, that uses the RLE (Run length encoding) algorithm.
+A simple and (currently) bad image compressor, that uses the RLE algorithm.
 
 ## Encoded output
 
@@ -9,25 +9,43 @@ It iterates over every row in an image, and convert to color blocks with the rep
 ```
 ...
 
-50#ffffff 10#000000 40#dedede
+50#ffffff10#00000040#dedede
 
 ...
 ```
 
-It writes this output to a .txt file.
+It writes this output to a `.txt` file.
 
 ## Getting started
 
-You can change these variables to get the script started.
-
-```py
-
-# ======================== SETTINGS ======================
-# ========================================================
-INPUT = 'in.png' # input image
-OUTPUT = 'result.jpg' # output image when decompressing
-COMPRESSED_FILE_OUTPUT = 'compressed.txt' # output compressed file
-# ========================================================
-# ========================================================
+### Install the required dependencies
 
 ```
+$ pip install -r requirements.txt
+```
+
+### CLI Arguments
+
+```
+usage: rlencode.py [-h] [-d | --decode | --no-decode] -i IN_FILE [-o OUT_FILE]
+
+options:
+  -h, --help            show this help message and exit
+  -d, --decode, --no-decode
+                        decode mode (default: False)
+  -i IN_FILE, --input IN_FILE
+                        Input file
+  -o OUT_FILE, --ouput OUT_FILE
+                        Output file (defualt: 'out')
+```
+
+### Examples
+
+```
+# Compress an image
+$ rlencode.py -i /path/to/my/img.png -o /path/to/desired/output.txt
+
+# Decompress
+$ rlencode.py -d -i /path/to/compressed/file.txt -o img.jpeg
+```
+
